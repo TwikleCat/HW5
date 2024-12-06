@@ -112,3 +112,11 @@ sns.scatterplot(x='Age', y='GPA', data=df)
 plt.title("Age vs GPA")
 plt.show()
 ````
+````
+sns.countplot(x='Department', data=df)
+plt.title("Distribution of Students Across Departments")
+plt.xticks(rotation=45)
+plt.xlabel("Department")
+plt.ylabel("Number of Students")
+plt.show()
+````
