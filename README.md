@@ -7,4 +7,7 @@ def sum_daily_odd_even(transactions: pd.DataFrame) -> pd.DataFrame:
     
     return result
 ````
+````
+    return teacher.groupby('teacher_id').nunique().reset_index().rename(columns={'subject_id': 'cnt'})[['teacher_id', 'cnt']]
+````
 
