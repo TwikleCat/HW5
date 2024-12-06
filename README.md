@@ -44,3 +44,71 @@ df = signups[["user_id"]].merge(confirmations[["user_id", "action"]], on="user_i
     result = df.groupby("user_id", as_index=False)["action"].mean().round(2).rename(columns={"action": "confirmation_rate"})
     return result
 ````
+# Work woth dataset
+````
+df = pd.read_csv('/kaggle/input/student-information-dataset/students.csv')
+
+df.head()
+````
+````
+df.info()
+````
+````
+df.isnull().sum()
+````
+````
+df.columns.to_list()
+````
+````
+df.duplicated().sum()
+````
+````
+df.describe(include = 'all').T
+````
+````
+df['StudentID'] = df['StudentID'].astype(int)
+
+df['Email'] = df['Email'].astype(str)
+
+df['GraduationYear'] = df['GraduationYear'].astype(int)
+
+df['Age'] = df['Age'].astype(int)
+
+df['GPA'] = df['GPA'].astype(float)
+
+df['Department'] = df['Department'].astype('category')
+````
+````
+age = df[(df['Age'] < 18) | (df['Age'] > 25)]
+print(age)
+````
+````
+print(df['Department'].value_counts())
+````
+````
+sns.histplot(df['Age'], kde=True)
+plt.title("Distribution of Age")
+plt.show()
+````
+````
+sns.histplot(df['GPA'], kde=True)
+plt.title("Distribution of GPA")
+plt.show()
+````
+````
+corr_matrix = df[['Age', 'GPA']].corr()
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm')
+plt.title("Correlation Matrix: Age and GPA")
+plt.show()
+````
+````
+sns.boxplot(x='Department', y='GPA', data=df)
+plt.title("GPA by Department")
+plt.xticks(rotation=45)
+plt.show()
+````
+````
+sns.scatterplot(x='Age', y='GPA', data=df)
+plt.title("Age vs GPA")
+plt.show()
+````
